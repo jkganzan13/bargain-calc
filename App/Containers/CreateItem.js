@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import R from 'ramda'
 import { BackHandler, View } from 'react-native'
 import { Container, Header, Content, Form, Item, Input, Label, Text,
   Title,
@@ -21,7 +22,6 @@ import { Colors } from '../Themes/'
 // Styles
 import styles from './Styles/CreateItemStyle'
 
-
 const PickerItem = ({ style, label, onChangePicker, selectedValue, options }) => (
   <Item inlineLabel style={style}>
     <Label style={styles.label}>{label}</Label>
@@ -42,7 +42,12 @@ const PickerItem = ({ style, label, onChangePicker, selectedValue, options }) =>
   </Item>
 );
 
-class CreateItem extends Component {
+const addDecimals = (x) => {
+  const float = parseFloat(x);
+  return float ? float.toFixed(2) : (0).toFixed(2);
+}
+
+export class CreateItem extends Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -56,6 +61,7 @@ class CreateItem extends Component {
 
     this.handleStateChange = this.handleStateChange.bind(this)
   }
+
   componentDidMount () {
     BackHandler.addEventListener('hardwareBackPress', () => {
       this.props.navigation.goBack();
@@ -68,25 +74,46 @@ class CreateItem extends Component {
   }
 
   handlePriceChange = key => value => {
-    const price = parseInt(value.replace('$',''));
+    const price = value.replace('$ ','');
     this.handleStateChange(key)(price || '');
+  }
+
+  sanitizeItem = (state) => {
+    const ITEM_KEYS = [
+      'category',
+      'name',
+      'originalPrice',
+      'salePrice',
+      'saleExpiry',
+      'savings'
+    ];
+    const transformations = {
+      originalPrice: addDecimals,
+      salePrice: addDecimals,
+      savings: R.always(this.calculateSavings())
+    };
+    return R.pipe(
+      R.pickAll(ITEM_KEYS),
+      R.evolve(transformations)
+    )(state);
   }
 
   handleSave = () => {
     if(!this.state.name) {
       return this.setState({ error: true })
     }
-    const item = {
-      ...this.state,
-      savings: this.calculateSavings(),
-    };
-    delete item.error;
-    console.log(item)
-    this.props.saveItem(item);
-    this.props.navigation.goBack();
+    const sanitized = this.sanitizeItem(this.state);
+    this.props.saveItem(sanitized);
+    this.props.navigation.navigate("ItemsList", { category: sanitized.category });
   }
 
-  calculateSavings = () => (this.state.originalPrice - this.state.salePrice).toFixed(2);
+  calculateSavings = () => {
+    const { originalPrice, salePrice } = this.state;
+    const op = parseFloat(originalPrice) || 0;
+    const sp = parseFloat(salePrice) || 0;
+    const savings = op - sp;
+    return savings ? addDecimals(savings) : addDecimals();
+  }
 
   render () {
     const {

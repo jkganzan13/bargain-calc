@@ -10,12 +10,12 @@ import styles from "./Styles/NavigationStyles";
 const NavigationDrawer = DrawerNavigator({
     ItemsList: { screen: ItemsList },
     CreateItem: { screen: CreateItem },
-		ListviewExample: { screen: ListviewExample },
-	},
-	{
-		initialRouteName: "ListviewExample",
-		contentComponent: props => <DrawerContent {...props} />,
-	}
+    ListviewExample: { screen: ListviewExample },
+  },
+  {
+    initialRouteName: "ListviewExample",
+    contentComponent: props => <DrawerContent {...props} />,
+  }
 );
 
 export default NavigationDrawer;
