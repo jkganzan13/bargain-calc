@@ -1,8 +1,9 @@
 import { StyleSheet } from 'react-native'
-import { ApplicationStyles, Colors, Metrics } from '../../Themes/'
+import { ApplicationStyles, Colors, Fonts, Metrics } from '../../Themes/'
 
 export default StyleSheet.create({
   ...ApplicationStyles.screen,
+  content: {},
   container: {
     flex: 1,
     marginTop: Metrics.navBarHeight,
@@ -22,16 +23,40 @@ export default StyleSheet.create({
     borderLeftWidth: 5,
     borderLeftColor: Colors.primary,
   },
+  itemHeader: {
+    marginTop: 5,
+    height: 75,
+  },
+  itemNameContainer:{
+    marginBottom: 5,
+  },
+  itemName: {
+    fontSize: Fonts.size.h3,
+    fontFamily: Fonts.type.base,
+    color: Colors.text,
+  },
+  itemExpiry: {
+    fontFamily: Fonts.type.regular,
+    fontSize: Fonts.size.small,
+    color: Colors.text,
+    opacity: 0.5,
+  },
+  savingsContainer: {},
+  price: {},
+  saved: {
+    alignSelf: 'flex-end'
+  },
+  text: {
+    fontFamily: Fonts.type.regular,
+    fontSize: Fonts.size.small,
+    color: Colors.text,
+  },
   itemRow: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     backgroundColor: Colors.white,
-  },
-  itemHeader: {
-    marginTop: 5,
-    height: 50,
   },
   itemContentList: {
     flex: 1,

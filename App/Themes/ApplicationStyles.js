@@ -11,9 +11,6 @@ const ApplicationStyles = {
       flex: 1,
       backgroundColor: Colors.background
     },
-    text: {
-      color: Colors.text,
-    },
     content: {
       padding: 10,
     },
@@ -89,6 +86,11 @@ const ApplicationStyles = {
     flexDirection: 'row',
     flexWrap: 'wrap',
   },
+  flexColContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    flexWrap: 'wrap',
+  }
 }
 
 export default ApplicationStyles

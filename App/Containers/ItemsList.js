@@ -9,14 +9,24 @@ import { Colors } from '../Themes/'
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
 
+const Savings = ({ price }) => (
+  <View style={styles.savingsContainer}>
+    <Text style={styles.itemName}>${price}</Text>
+    <Text style={[styles.itemExpiry, styles.saved]}>saved</Text>
+  </View>
+);
+
+const ItemName = ({ name, expiry }) => (
+  <View style={styles.itemNameContainer}>
+    <Text style={styles.itemName}>{name}</Text>
+    <Text style={styles.itemExpiry}>expires {expiry}</Text>
+  </View>
+)
+
 // Styles
 import styles from './Styles/ItemsListStyle'
 
 class ItemsList extends Component {
-  // constructor (props) {
-  //   super(props)
-  //   this.state = {}
-  // }
   componentDidMount () {
     BackHandler.addEventListener('hardwareBackPress', () => {
       this.props.navigation.goBack();
@@ -26,8 +36,8 @@ class ItemsList extends Component {
 
   _renderHeader = item => (
     <View style={[styles.item, styles.itemRow, styles.itemHeader]}>
-      <Text style={styles.text}>{item.name}</Text>
-      <Text style={styles.text}>{`Savings: $${item.savings}`}</Text>
+      <ItemName name={item.name} expiry={item.saleExpiry} />
+      <Savings price={item.savings} />
     </View>
   )
 
@@ -41,9 +51,7 @@ class ItemsList extends Component {
         <Text style={styles.text}>{`Sale Price:`}</Text>
         <Text style={styles.text}>${item.salePrice}</Text>
       </View>
-      <View style={[styles.itemRow, styles.itemContent]}>
-        <Text style={styles.text}>{`Sale Expiry:`}</Text>
-        <Text style={styles.text}>{item.saleExpiry}</Text>
+      <View style={[styles.itemRow]}>
       </View>
     </View>
   )

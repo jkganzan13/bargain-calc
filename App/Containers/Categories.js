@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { List, ListItem, Container, Header, Title, Button, Left, Right, Body, Icon } from "native-base";
+import { List, ListItem, Container, Header, Title, Button, Left, Right, Body, Icon, Fab } from "native-base";
 import { View, Text, ScrollView, TouchableOpacity, StyleSheet  } from 'react-native'
 import { Colors } from '../Themes/'
 import styles from './Styles/CategoriesStyles'
@@ -23,7 +23,8 @@ class Categories extends React.Component {
         key={i}
         onPress={onPress}
       >
-        <Text style={styles[`categoryTitle${i}`]}>{item.title}</Text>
+        <Text style={styles.categoryTitle}>{item.title}</Text>
+        <Text style={styles.count}>{`${item.items.length} items`}</Text>
       </MyCard>
     );
   };
@@ -47,7 +48,14 @@ class Categories extends React.Component {
         <ScrollView contentContainerStyle={styles.categoriesContainer}>
           { this.props.categories.map(this._renderItem) }
         </ScrollView>
-
+        <Fab
+          style={styles.fab}
+          onPress={() => this.props.navigation.navigate("CreateItem")}
+        >
+          <Icon style={StyleSheet.flatten(styles.fabIcon)} name="md-add">
+            <Text style={styles.fabText}>{` Add`}</Text>
+          </Icon>
+        </Fab>
       </Container>
     );
   }

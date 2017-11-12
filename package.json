@@ -76,5 +76,8 @@
     ],
     "preset": "react-native"
   },
-  "config": {}
+  "config": {},
+  "rnpm": {
+    "assets": ["./App/Assets/fonts"]
+  }
 }
