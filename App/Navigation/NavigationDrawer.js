@@ -2,7 +2,7 @@ import React from "react";
 import { DrawerNavigator } from "react-navigation";
 import ItemsList from '../Containers/ItemsList'
 import CreateItem from '../Containers/CreateItem'
-import ListviewExample from "../Containers/ListviewExample";
+import Categories from "../Containers/Categories";
 import DrawerContent from "../Containers/DrawerContent";
 
 import styles from "./Styles/NavigationStyles";
@@ -10,10 +10,10 @@ import styles from "./Styles/NavigationStyles";
 const NavigationDrawer = DrawerNavigator({
     ItemsList: { screen: ItemsList },
     CreateItem: { screen: CreateItem },
-    ListviewExample: { screen: ListviewExample },
+    Categories: { screen: Categories },
   },
   {
-    initialRouteName: "ListviewExample",
+    initialRouteName: "Categories",
     contentComponent: props => <DrawerContent {...props} />,
   }
 );

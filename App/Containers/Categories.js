@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { List, ListItem, Container, Header, Title, Button, Left, Right, Body, Icon } from "native-base";
 import { View, Text, ScrollView, TouchableOpacity, StyleSheet  } from 'react-native'
 import { Colors } from '../Themes/'
-import styles from './Styles/ListviewExampleStyles'
+import styles from './Styles/CategoriesStyles'
 
 const MyCard = ({ onPress, children, count, title }) => (
   <TouchableOpacity
@@ -14,7 +14,7 @@ const MyCard = ({ onPress, children, count, title }) => (
   </TouchableOpacity>
 )
 
-class ListviewExample extends React.Component {
+class Categories extends React.Component {
   _renderItem = (item, i) => {
     const onPress = () => this.props.navigation.navigate("ItemsList", { category: item.title });
 
@@ -59,4 +59,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(ListviewExample);
+export default connect(mapStateToProps)(Categories);
