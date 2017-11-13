@@ -10,7 +10,10 @@ const MyCard = ({ onPress, children, count, title }) => (
     onPress={onPress}
     style={styles.categoriesItem}
   >
-    {children}
+    <View>
+      {children}
+    </View>
+    <Icon style={styles.categoryIcon} name="ios-arrow-forward" />
   </TouchableOpacity>
 )
 
@@ -37,9 +40,9 @@ class Categories extends React.Component {
           androidStatusBarColor={Colors.status}
         >
           <Left>
-            <Button transparent onPress={() => this.props.navigation.navigate("DrawerOpen")}>
-              <Icon name='md-menu' />
-            </Button>
+            {/*<Button transparent onPress={() => this.props.navigation.navigate("DrawerOpen")}>*/}
+              {/*<Icon name='md-menu' />*/}
+            {/*</Button>*/}
           </Left>
           <Body>
             <Title>My Categories</Title>

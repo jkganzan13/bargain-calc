@@ -3,7 +3,10 @@ import { ApplicationStyles, Colors, Fonts, Metrics } from '../../Themes/'
 
 export default StyleSheet.create({
   ...ApplicationStyles.screen,
-  content: {},
+  content: {
+    padding: 10,
+    paddingTop: 0,
+  },
   container: {
     flex: 1,
     marginTop: Metrics.navBarHeight,
@@ -20,7 +23,7 @@ export default StyleSheet.create({
     paddingRight: 10,
     paddingTop: 5,
     paddingBottom: 5,
-    borderLeftWidth: 5,
+    borderLeftWidth: 3,
     borderLeftColor: Colors.primary,
   },
   itemHeader: {
@@ -48,7 +51,7 @@ export default StyleSheet.create({
   },
   text: {
     fontFamily: Fonts.type.regular,
-    fontSize: Fonts.size.small,
+    fontSize: Fonts.size.medium,
     color: Colors.text,
   },
   itemRow: {

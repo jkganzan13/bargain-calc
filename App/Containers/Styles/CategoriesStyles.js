@@ -24,10 +24,13 @@ export default StyleSheet.create({
   ...ApplicationStyles.screen,
   categoryTitle: {
     ...Fonts.style.h1,
+    color: Colors.text,
   },
   count: {
-    ...Fonts.style.description,
-    marginTop: 10,
+    fontFamily: Fonts.type.regular,
+    fontSize: Fonts.size.medium,
+    color: Colors.text,
+    opacity: 0.5,
   },
   categoryCount: {
     borderRadius: 4,
@@ -40,16 +43,25 @@ export default StyleSheet.create({
   categoryCountText: {
     paddingTop: 5,
     paddingBottom: 5,
+
   },
   categoriesContainer: {
     ...ApplicationStyles.flexColContainer,
-    padding: 10,
   },
   categoriesItem: {
-    elevation: 5,
-    marginBottom: 10,
+    margin: 10,
+    marginTop: 0,
+    marginBottom: 0,
     padding: 20,
-    backgroundColor: Colors.white,
+    backgroundColor: Colors.category,
+    borderBottomWidth: 0.5,
+    borderBottomColor: Colors.text,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between'
+  },
+  categoryIcon: {
+    color: Colors.text,
   },
   fab: {
     backgroundColor: Colors.primary,
