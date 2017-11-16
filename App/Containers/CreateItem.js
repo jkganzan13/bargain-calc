@@ -14,7 +14,7 @@ import { connect } from 'react-redux'
 import CategoriesActions from "../Redux/CategoriesRedux";
 import DatePicker from 'react-native-datepicker';
 import { Colors } from '../Themes/'
-
+import { CATEGORY_ITEM_KEYS } from '../Common/constants'
 
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
@@ -79,21 +79,13 @@ export class CreateItem extends Component {
   }
 
   sanitizeItem = (state) => {
-    const ITEM_KEYS = [
-      'category',
-      'name',
-      'originalPrice',
-      'salePrice',
-      'saleExpiry',
-      'savings'
-    ];
     const transformations = {
       originalPrice: addDecimals,
       salePrice: addDecimals,
       savings: R.always(this.calculateSavings())
     };
     return R.pipe(
-      R.pickAll(ITEM_KEYS),
+      R.pickAll(CATEGORY_ITEM_KEYS),
       R.evolve(transformations)
     )(state);
   }
@@ -158,7 +150,6 @@ export class CreateItem extends Component {
                 value={name}
                 keyboardType="default"
                 returnKeyType="next"
-                autoCapitalize="none"
                 autoCorrect
                 onChangeText={this.handleStateChange('name')}
                 underlineColorAndroid="transparent"
@@ -170,7 +161,7 @@ export class CreateItem extends Component {
               <Input
                 ref="originalPrice"
                 value={`$ ${originalPrice}`}
-                keyboardType="numbers-and-punctuation"
+                keyboardType="numeric"
                 returnKeyType="next"
                 autoCapitalize="none"
                 onChangeText={this.handlePriceChange('originalPrice')}
@@ -182,7 +173,7 @@ export class CreateItem extends Component {
               <Input
                 ref="salePrice"
                 value={`$ ${salePrice}`}
-                keyboardType="numbers-and-punctuation"
+                keyboardType="numeric"
                 returnKeyType="next"
                 autoCapitalize="none"
                 onChangeText={this.handlePriceChange('salePrice')}

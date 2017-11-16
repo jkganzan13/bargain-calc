@@ -10,6 +10,7 @@ const colors = {
   facebook: '#3b5998',
   transparent: 'rgba(0,0,0,0)',
   white: '#FFFFFF',
+  dimWhite: '#00000080',
   text: '#4a4a4a',
 }
 

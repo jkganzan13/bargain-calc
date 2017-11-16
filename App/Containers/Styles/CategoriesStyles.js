@@ -65,8 +65,8 @@ export default StyleSheet.create({
   },
   fab: {
     backgroundColor: Colors.primary,
-    right: (Metrics.screenWidth / 2) - 75,
-    width: 100,
+    right: (Metrics.screenWidth / 2) - 62.5,
+    width: 75,
     height: 30,
   },
   fabIcon: {

@@ -4,6 +4,9 @@ import { List, ListItem, Container, Header, Title, Button, Left, Right, Body, Ic
 import { View, Text, ScrollView, TouchableOpacity, StyleSheet  } from 'react-native'
 import { Colors } from '../Themes/'
 import styles from './Styles/CategoriesStyles'
+import CategoriesModal from '../Components/CategoriesModal'
+import { CATEGORIES_MODAL_ACTIONS } from '../Common/constants'
+import CategoriesActions from "../Redux/CategoriesRedux";
 
 const MyCard = ({ onPress, children, count, title }) => (
   <TouchableOpacity
@@ -18,6 +21,17 @@ const MyCard = ({ onPress, children, count, title }) => (
 )
 
 class Categories extends React.Component {
+  state = {
+    modalVisible: false,
+  }
+
+  toggleModalVisible = () => this.setState({ modalVisible: !this.state.modalVisible })
+
+  handleAddModalConfirm = (category) => {
+    this.props.saveCategory(category);
+    this.toggleModalVisible();
+  }
+
   _renderItem = (item, i) => {
     const onPress = () => this.props.navigation.navigate("ItemsList", { category: item.title });
 
@@ -53,12 +67,18 @@ class Categories extends React.Component {
         </ScrollView>
         <Fab
           style={styles.fab}
-          onPress={() => this.props.navigation.navigate("CreateItem")}
+          onPress={this.toggleModalVisible}
         >
           <Icon style={StyleSheet.flatten(styles.fabIcon)} name="md-add">
             <Text style={styles.fabText}>{` Add`}</Text>
           </Icon>
         </Fab>
+        <CategoriesModal
+          title="Add Category"
+          visible={this.state.modalVisible}
+          onConfirm={this.handleAddModalConfirm}
+          onCancel={this.toggleModalVisible}
+        />
       </Container>
     );
   }
@@ -70,4 +90,10 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(Categories);
+const mapDispatchToProps = dispatch => {
+  return {
+    saveCategory: (category) => dispatch(CategoriesActions.saveCategory(category)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Categories);

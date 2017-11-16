@@ -1,13 +1,16 @@
 import Actions, { reducer, INITIAL_STATE } from '../../App/Redux/CategoriesRedux'
 
 test('saveCategory', (t) => {
-  const newCategory = "New Category";
+  const newCategory = {
+    title: "New Category",
+    description: "new category description"
+  };
   const state = reducer(INITIAL_STATE, Actions.saveCategory(newCategory))
 
   const expected = [
     ...INITIAL_STATE.categories,
     {
-      title: newCategory,
+      ...newCategory,
       items: [],
     }
   ];

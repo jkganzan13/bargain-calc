@@ -45,7 +45,8 @@ export const INITIAL_STATE = Immutable({
 // request the data from an api
 export const saveCategory = (state, { category }) => {
   const newCategory = {
-    title: category,
+    title: category.title,
+    description: category.description,
     items: [],
   }
   return state.merge({ categories: [...state.categories, newCategory] })
