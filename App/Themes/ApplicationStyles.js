@@ -89,7 +89,6 @@ const ApplicationStyles = {
   flexColContainer: {
     flex: 1,
     flexDirection: 'column',
-    flexWrap: 'wrap',
   }
 }
 

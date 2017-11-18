@@ -43,10 +43,10 @@ export default StyleSheet.create({
   categoryCountText: {
     paddingTop: 5,
     paddingBottom: 5,
-
   },
   categoriesContainer: {
     ...ApplicationStyles.flexColContainer,
+    marginBottom: 10,
   },
   categoriesItem: {
     margin: 10,

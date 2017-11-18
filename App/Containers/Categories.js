@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { List, ListItem, Container, Header, Title, Button, Left, Right, Body, Icon, Fab } from "native-base";
+import { List, ListItem, Container, Header, Title, Button, Left, Right, Body, Icon, Fab, Content } from "native-base";
 import { View, Text, ScrollView, TouchableOpacity, StyleSheet  } from 'react-native'
 import { Colors } from '../Themes/'
 import styles from './Styles/CategoriesStyles'
@@ -62,9 +62,9 @@ class Categories extends React.Component {
             <Title>My Categories</Title>
           </Body>
         </Header>
-        <ScrollView contentContainerStyle={styles.categoriesContainer}>
+        <Content style={styles.categoriesContainer}>
           { this.props.categories.map(this._renderItem) }
-        </ScrollView>
+        </Content>
         <Fab
           style={styles.fab}
           onPress={this.toggleModalVisible}
