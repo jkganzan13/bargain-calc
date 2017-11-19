@@ -12,7 +12,6 @@ export default StyleSheet.create({
   modal: {
     backgroundColor: Colors.white,
     width: Metrics.screenWidth - 20,
-    height: Metrics.screenHeight / 3 + 30,
     padding: 10,
   },
   title: {
@@ -24,7 +23,7 @@ export default StyleSheet.create({
     marginBottom: 10,
   },
   btnContainer: {
-    ...ApplicationStyles.flexRowContainer,
+    flexDirection: 'row',
     marginTop: 5,
   },
   btn: {
