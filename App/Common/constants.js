@@ -1,8 +1,3 @@
-export const CATEGORIES_MODAL_ACTIONS = {
-  ADD: 'ADD',
-  EDIT: 'EDIT',
-};
-
 export const CATEGORY_KEYS = [
   'id',
   'name',

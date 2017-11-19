@@ -49,13 +49,19 @@ export default StyleSheet.create({
     marginBottom: 10,
   },
   categoriesItem: {
-    padding: 20,
     backgroundColor: Colors.category,
-    borderBottomWidth: 0.5,
-    borderBottomColor: Colors.text,
+    borderLeftWidth: 5,
+    borderLeftColor: Colors.primary,
+    borderRightWidth: 5,
+    borderRightColor: Colors.red,
+  },
+  categoriesItemInner: {
+    padding: 20,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    borderBottomWidth: 0.5,
+    borderBottomColor: Colors.text,
   },
   categoryIcon: {
     color: Colors.text,

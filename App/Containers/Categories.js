@@ -5,19 +5,19 @@ import { View, Text, Alert, TouchableOpacity, StyleSheet, ListView } from 'react
 import { Colors } from '../Themes/'
 import styles from './Styles/CategoriesStyles'
 import CategoriesModal from '../Components/CategoriesModal'
-import { CATEGORIES_MODAL_ACTIONS } from '../Common/constants'
 import CategoriesActions from "../Redux/CategoriesRedux";
-import R from 'ramda';
 
 const Category = ({ onPress, children, count, title }) => (
   <TouchableOpacity
     onPress={onPress}
     style={styles.categoriesItem}
   >
-    <View>
-      {children}
+    <View style={styles.categoriesItemInner}>
+      <View>
+        {children}
+      </View>
+      <Icon style={styles.categoryIcon} name="ios-arrow-forward" />
     </View>
-    <Icon style={styles.categoryIcon} name="ios-arrow-forward" />
   </TouchableOpacity>
 )
 
@@ -119,6 +119,8 @@ class Categories extends React.Component {
             renderRightHiddenRow={this._renderRightIcon}
             leftOpenValue={75}
             rightOpenValue={-75}
+            stopLeftSwipe={75}
+            stopRightSwipe={-75}
           />
         </Content>
 
