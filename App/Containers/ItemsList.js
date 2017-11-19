@@ -58,7 +58,7 @@ class ItemsList extends Component {
 
   render () {
     const category = this.props.navigation.state.params.category;
-    const { items } = this.props.categories.find(c => c.title === category);
+    const { items } = this.props.categories.find(c => c.name === category);
 
     return (
       <Container style={styles.mainContainer}>

@@ -12,6 +12,7 @@ const colors = {
   white: '#FFFFFF',
   dimWhite: '#00000080',
   text: '#4a4a4a',
+  red: '#D64541',
 }
 
 export default colors

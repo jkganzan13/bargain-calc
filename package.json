@@ -41,7 +41,8 @@
     "redux-persist": "^4.10.1",
     "redux-saga": "^0.15.6",
     "reduxsauce": "^0.4.1",
-    "seamless-immutable": "^7.1.2"
+    "seamless-immutable": "^7.1.2",
+    "uuid": "^3.1.0"
   },
   "devDependencies": {
     "@storybook/addon-storyshots": "^3.2.3",
@@ -78,6 +79,8 @@
   },
   "config": {},
   "rnpm": {
-    "assets": ["./App/Assets/fonts"]
+    "assets": [
+      "./App/Assets/fonts"
+    ]
   }
 }

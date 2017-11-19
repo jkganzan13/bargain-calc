@@ -49,9 +49,6 @@ export default StyleSheet.create({
     marginBottom: 10,
   },
   categoriesItem: {
-    margin: 10,
-    marginTop: 0,
-    marginBottom: 0,
     padding: 20,
     backgroundColor: Colors.category,
     borderBottomWidth: 0.5,
@@ -62,6 +59,12 @@ export default StyleSheet.create({
   },
   categoryIcon: {
     color: Colors.text,
+  },
+  leftIcon: {
+    backgroundColor: Colors.primary
+  },
+  rightIcon: {
+    backgroundColor: Colors.red
   },
   fab: {
     backgroundColor: Colors.primary,

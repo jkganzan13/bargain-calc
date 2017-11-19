@@ -4,7 +4,8 @@ export const CATEGORIES_MODAL_ACTIONS = {
 };
 
 export const CATEGORY_KEYS = [
-  'title',
+  'id',
+  'name',
   'description',
 ];
 

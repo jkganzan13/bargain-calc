@@ -35,7 +35,7 @@ const PickerItem = ({ style, label, onChangePicker, selectedValue, options }) =>
     >
       {
         options.map((c, i) => (
-          <Item key={i} label={c.title} value={c.title} />
+          <Item key={i} label={c.name} value={c.name} />
         ))
       }
     </Picker>
@@ -51,7 +51,7 @@ export class CreateItem extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      category: props.categories[0] && props.categories[0].title,
+      category: props.categories[0] && props.categories[0].name,
       name: '',
       originalPrice: '',
       salePrice: '',
